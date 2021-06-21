@@ -1,0 +1,289 @@
+Calling target program-options parser
+[05:30:18.937] [bmv2] [D] [thread 6068] Set default default entry for table 'MyIngress.phy_forward': MyIngress.drop - 
+[05:30:18.937] [bmv2] [D] [thread 6068] Set default default entry for table 'tbl_basic90': basic90 - 
+Adding interface s1-eth1 as port 1
+[05:30:18.938] [bmv2] [D] [thread 6068] Adding interface s1-eth1 as port 1
+Adding interface s1-eth2 as port 2
+[05:30:18.981] [bmv2] [D] [thread 6068] Adding interface s1-eth2 as port 2
+Adding interface s1-cpu-eth0 as port 3
+[05:30:19.021] [bmv2] [D] [thread 6068] Adding interface s1-cpu-eth0 as port 3
+[05:30:19.089] [bmv2] [I] [thread 6068] Starting Thrift server on port 9090
+[05:30:19.089] [bmv2] [I] [thread 6068] Thrift server was started
+[05:30:21.812] [bmv2] [T] [thread 6124] bm_get_config
+[05:30:21.825] [bmv2] [T] [thread 6124] bm_table_add_entry
+[05:30:21.825] [bmv2] [D] [thread 6124] Entry 0 added to table 'MyIngress.phy_forward'
+[05:30:21.825] [bmv2] [D] [thread 6124] Dumping entry 0
+Match key:
+* standard_metadata.ingress_port: EXACT     0001
+Action entry: MyIngress.forward - 2,
+
+[05:30:21.828] [bmv2] [T] [thread 6124] bm_table_add_entry
+[05:30:21.828] [bmv2] [D] [thread 6124] Entry 1 added to table 'MyIngress.phy_forward'
+[05:30:21.829] [bmv2] [D] [thread 6124] Dumping entry 1
+Match key:
+* standard_metadata.ingress_port: EXACT     0002
+Action entry: MyIngress.forward - 1,
+
+[05:30:21.833] [bmv2] [T] [thread 6124] mirroring_sesssion_add
+[05:31:10.932] [bmv2] [D] [thread 6074] [0.0] [cxt 0] Processing packet received on port 1
+[05:31:10.932] [bmv2] [D] [thread 6074] [0.0] [cxt 0] Parser 'parser': start
+[05:31:10.932] [bmv2] [D] [thread 6074] [0.0] [cxt 0] Parser 'parser' entering state 'start'
+[05:31:10.932] [bmv2] [D] [thread 6074] [0.0] [cxt 0] Parser state 'start' has no switch, going to default next state
+[05:31:10.932] [bmv2] [T] [thread 6074] [0.0] [cxt 0] Bytes parsed: 0
+[05:31:10.932] [bmv2] [D] [thread 6074] [0.0] [cxt 0] Parser 'parser': end
+[05:31:10.932] [bmv2] [D] [thread 6074] [0.0] [cxt 0] Pipeline 'ingress': start
+[05:31:10.932] [bmv2] [T] [thread 6074] [0.0] [cxt 0] Applying table 'MyIngress.phy_forward'
+[05:31:10.932] [bmv2] [D] [thread 6074] [0.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+
+[05:31:10.932] [bmv2] [D] [thread 6074] [0.0] [cxt 0] Table 'MyIngress.phy_forward': hit with handle 0
+[05:31:10.933] [bmv2] [D] [thread 6074] [0.0] [cxt 0] Dumping entry 0
+Match key:
+* standard_metadata.ingress_port: EXACT     0001
+Action entry: MyIngress.forward - 2,
+
+[05:31:10.933] [bmv2] [D] [thread 6074] [0.0] [cxt 0] Action entry is MyIngress.forward - 2,
+[05:31:10.933] [bmv2] [T] [thread 6074] [0.0] [cxt 0] Action MyIngress.forward
+[05:31:10.933] [bmv2] [T] [thread 6074] [0.0] [cxt 0] basic.p4(60) Primitive standard_metadata.egress_spec = port
+[05:31:10.933] [bmv2] [D] [thread 6074] [0.0] [cxt 0] Pipeline 'ingress': end
+[05:31:10.933] [bmv2] [D] [thread 6074] [0.0] [cxt 0] Egress port is 2
+[05:31:10.933] [bmv2] [D] [thread 6077] [0.0] [cxt 0] Pipeline 'egress': start
+[05:31:10.933] [bmv2] [T] [thread 6077] [0.0] [cxt 0] basic.p4(89) Condition "standard_metadata.instance_type == 0" (node_5) is true
+[05:31:10.933] [bmv2] [T] [thread 6077] [0.0] [cxt 0] Applying table 'tbl_basic90'
+[05:31:10.934] [bmv2] [D] [thread 6077] [0.0] [cxt 0] Looking up key:
+
+[05:31:10.934] [bmv2] [D] [thread 6077] [0.0] [cxt 0] Table 'tbl_basic90': miss
+[05:31:10.934] [bmv2] [D] [thread 6077] [0.0] [cxt 0] Action entry is basic90 - 
+[05:31:10.934] [bmv2] [T] [thread 6077] [0.0] [cxt 0] Action basic90
+[05:31:10.934] [bmv2] [T] [thread 6077] [0.0] [cxt 0] basic.p4(90) Primitive clone(CloneType.E2E,100)
+[05:31:10.934] [bmv2] [D] [thread 6077] [0.0] [cxt 0] Pipeline 'egress': end
+[05:31:10.934] [bmv2] [D] [thread 6077] [0.0] [cxt 0] Cloning packet at egress
+[05:31:10.934] [bmv2] [D] [thread 6077] [0.0] [cxt 0] Cloning packet to egress port 3
+[05:31:10.934] [bmv2] [D] [thread 6077] [0.0] [cxt 0] Deparser 'deparser': start
+[05:31:10.934] [bmv2] [D] [thread 6077] [0.0] [cxt 0] Deparser 'deparser': end
+[05:31:10.934] [bmv2] [D] [thread 6078] [0.1] [cxt 0] Pipeline 'egress': start
+[05:31:10.934] [bmv2] [T] [thread 6078] [0.1] [cxt 0] basic.p4(89) Condition "standard_metadata.instance_type == 0" (node_5) is false
+[05:31:10.934] [bmv2] [D] [thread 6078] [0.1] [cxt 0] Pipeline 'egress': end
+[05:31:10.934] [bmv2] [D] [thread 6078] [0.1] [cxt 0] Deparser 'deparser': start
+[05:31:10.934] [bmv2] [D] [thread 6078] [0.1] [cxt 0] Deparser 'deparser': end
+[05:31:10.934] [bmv2] [D] [thread 6079] [0.0] [cxt 0] Transmitting packet of size 98 out of port 2
+[05:31:10.934] [bmv2] [D] [thread 6079] [0.1] [cxt 0] Transmitting packet of size 98 out of port 3
+[05:31:10.935] [bmv2] [D] [thread 6074] [1.0] [cxt 0] Processing packet received on port 2
+[05:31:10.935] [bmv2] [D] [thread 6074] [1.0] [cxt 0] Parser 'parser': start
+[05:31:10.935] [bmv2] [D] [thread 6074] [1.0] [cxt 0] Parser 'parser' entering state 'start'
+[05:31:10.935] [bmv2] [D] [thread 6074] [1.0] [cxt 0] Parser state 'start' has no switch, going to default next state
+[05:31:10.935] [bmv2] [T] [thread 6074] [1.0] [cxt 0] Bytes parsed: 0
+[05:31:10.935] [bmv2] [D] [thread 6074] [1.0] [cxt 0] Parser 'parser': end
+[05:31:10.935] [bmv2] [D] [thread 6074] [1.0] [cxt 0] Pipeline 'ingress': start
+[05:31:10.935] [bmv2] [T] [thread 6074] [1.0] [cxt 0] Applying table 'MyIngress.phy_forward'
+[05:31:10.936] [bmv2] [D] [thread 6074] [1.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0002
+
+[05:31:10.936] [bmv2] [D] [thread 6074] [1.0] [cxt 0] Table 'MyIngress.phy_forward': hit with handle 1
+[05:31:10.936] [bmv2] [D] [thread 6074] [1.0] [cxt 0] Dumping entry 1
+Match key:
+* standard_metadata.ingress_port: EXACT     0002
+Action entry: MyIngress.forward - 1,
+
+[05:31:10.936] [bmv2] [D] [thread 6074] [1.0] [cxt 0] Action entry is MyIngress.forward - 1,
+[05:31:10.936] [bmv2] [T] [thread 6074] [1.0] [cxt 0] Action MyIngress.forward
+[05:31:10.936] [bmv2] [T] [thread 6074] [1.0] [cxt 0] basic.p4(60) Primitive standard_metadata.egress_spec = port
+[05:31:10.936] [bmv2] [D] [thread 6074] [1.0] [cxt 0] Pipeline 'ingress': end
+[05:31:10.936] [bmv2] [D] [thread 6074] [1.0] [cxt 0] Egress port is 1
+[05:31:10.940] [bmv2] [D] [thread 6076] [1.0] [cxt 0] Pipeline 'egress': start
+[05:31:10.940] [bmv2] [T] [thread 6076] [1.0] [cxt 0] basic.p4(89) Condition "standard_metadata.instance_type == 0" (node_5) is true
+[05:31:10.940] [bmv2] [T] [thread 6076] [1.0] [cxt 0] Applying table 'tbl_basic90'
+[05:31:10.940] [bmv2] [D] [thread 6076] [1.0] [cxt 0] Looking up key:
+
+[05:31:10.940] [bmv2] [D] [thread 6076] [1.0] [cxt 0] Table 'tbl_basic90': miss
+[05:31:10.940] [bmv2] [D] [thread 6076] [1.0] [cxt 0] Action entry is basic90 - 
+[05:31:10.940] [bmv2] [T] [thread 6076] [1.0] [cxt 0] Action basic90
+[05:31:10.940] [bmv2] [T] [thread 6076] [1.0] [cxt 0] basic.p4(90) Primitive clone(CloneType.E2E,100)
+[05:31:10.940] [bmv2] [D] [thread 6076] [1.0] [cxt 0] Pipeline 'egress': end
+[05:31:10.940] [bmv2] [D] [thread 6076] [1.0] [cxt 0] Cloning packet at egress
+[05:31:10.940] [bmv2] [D] [thread 6076] [1.0] [cxt 0] Cloning packet to egress port 3
+[05:31:10.940] [bmv2] [D] [thread 6076] [1.0] [cxt 0] Deparser 'deparser': start
+[05:31:10.940] [bmv2] [D] [thread 6076] [1.0] [cxt 0] Deparser 'deparser': end
+[05:31:10.940] [bmv2] [D] [thread 6078] [1.1] [cxt 0] Pipeline 'egress': start
+[05:31:10.940] [bmv2] [T] [thread 6078] [1.1] [cxt 0] basic.p4(89) Condition "standard_metadata.instance_type == 0" (node_5) is false
+[05:31:10.940] [bmv2] [D] [thread 6078] [1.1] [cxt 0] Pipeline 'egress': end
+[05:31:10.940] [bmv2] [D] [thread 6078] [1.1] [cxt 0] Deparser 'deparser': start
+[05:31:10.940] [bmv2] [D] [thread 6078] [1.1] [cxt 0] Deparser 'deparser': end
+[05:31:10.940] [bmv2] [D] [thread 6079] [1.0] [cxt 0] Transmitting packet of size 98 out of port 1
+[05:31:10.940] [bmv2] [D] [thread 6079] [1.1] [cxt 0] Transmitting packet of size 98 out of port 3
+[05:31:38.472] [bmv2] [D] [thread 6074] [2.0] [cxt 0] Processing packet received on port 1
+[05:31:38.472] [bmv2] [D] [thread 6074] [2.0] [cxt 0] Parser 'parser': start
+[05:31:38.472] [bmv2] [D] [thread 6074] [2.0] [cxt 0] Parser 'parser' entering state 'start'
+[05:31:38.472] [bmv2] [D] [thread 6074] [2.0] [cxt 0] Parser state 'start' has no switch, going to default next state
+[05:31:38.472] [bmv2] [T] [thread 6074] [2.0] [cxt 0] Bytes parsed: 0
+[05:31:38.472] [bmv2] [D] [thread 6074] [2.0] [cxt 0] Parser 'parser': end
+[05:31:38.472] [bmv2] [D] [thread 6074] [2.0] [cxt 0] Pipeline 'ingress': start
+[05:31:38.472] [bmv2] [T] [thread 6074] [2.0] [cxt 0] Applying table 'MyIngress.phy_forward'
+[05:31:38.472] [bmv2] [D] [thread 6074] [2.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+
+[05:31:38.472] [bmv2] [D] [thread 6074] [2.0] [cxt 0] Table 'MyIngress.phy_forward': hit with handle 0
+[05:31:38.472] [bmv2] [D] [thread 6074] [2.0] [cxt 0] Dumping entry 0
+Match key:
+* standard_metadata.ingress_port: EXACT     0001
+Action entry: MyIngress.forward - 2,
+
+[05:31:38.472] [bmv2] [D] [thread 6074] [2.0] [cxt 0] Action entry is MyIngress.forward - 2,
+[05:31:38.472] [bmv2] [T] [thread 6074] [2.0] [cxt 0] Action MyIngress.forward
+[05:31:38.472] [bmv2] [T] [thread 6074] [2.0] [cxt 0] basic.p4(60) Primitive standard_metadata.egress_spec = port
+[05:31:38.472] [bmv2] [D] [thread 6074] [2.0] [cxt 0] Pipeline 'ingress': end
+[05:31:38.472] [bmv2] [D] [thread 6074] [2.0] [cxt 0] Egress port is 2
+[05:31:38.473] [bmv2] [D] [thread 6077] [2.0] [cxt 0] Pipeline 'egress': start
+[05:31:38.473] [bmv2] [T] [thread 6077] [2.0] [cxt 0] basic.p4(89) Condition "standard_metadata.instance_type == 0" (node_5) is true
+[05:31:38.473] [bmv2] [T] [thread 6077] [2.0] [cxt 0] Applying table 'tbl_basic90'
+[05:31:38.473] [bmv2] [D] [thread 6077] [2.0] [cxt 0] Looking up key:
+
+[05:31:38.473] [bmv2] [D] [thread 6077] [2.0] [cxt 0] Table 'tbl_basic90': miss
+[05:31:38.473] [bmv2] [D] [thread 6077] [2.0] [cxt 0] Action entry is basic90 - 
+[05:31:38.473] [bmv2] [T] [thread 6077] [2.0] [cxt 0] Action basic90
+[05:31:38.473] [bmv2] [T] [thread 6077] [2.0] [cxt 0] basic.p4(90) Primitive clone(CloneType.E2E,100)
+[05:31:38.473] [bmv2] [D] [thread 6077] [2.0] [cxt 0] Pipeline 'egress': end
+[05:31:38.473] [bmv2] [D] [thread 6077] [2.0] [cxt 0] Cloning packet at egress
+[05:31:38.473] [bmv2] [D] [thread 6077] [2.0] [cxt 0] Cloning packet to egress port 3
+[05:31:38.473] [bmv2] [D] [thread 6077] [2.0] [cxt 0] Deparser 'deparser': start
+[05:31:38.473] [bmv2] [D] [thread 6077] [2.0] [cxt 0] Deparser 'deparser': end
+[05:31:38.473] [bmv2] [D] [thread 6078] [2.1] [cxt 0] Pipeline 'egress': start
+[05:31:38.473] [bmv2] [T] [thread 6078] [2.1] [cxt 0] basic.p4(89) Condition "standard_metadata.instance_type == 0" (node_5) is false
+[05:31:38.473] [bmv2] [D] [thread 6078] [2.1] [cxt 0] Pipeline 'egress': end
+[05:31:38.473] [bmv2] [D] [thread 6078] [2.1] [cxt 0] Deparser 'deparser': start
+[05:31:38.473] [bmv2] [D] [thread 6078] [2.1] [cxt 0] Deparser 'deparser': end
+[05:31:38.473] [bmv2] [D] [thread 6079] [2.0] [cxt 0] Transmitting packet of size 98 out of port 2
+[05:31:38.473] [bmv2] [D] [thread 6079] [2.1] [cxt 0] Transmitting packet of size 98 out of port 3
+[05:31:38.473] [bmv2] [D] [thread 6074] [3.0] [cxt 0] Processing packet received on port 2
+[05:31:38.473] [bmv2] [D] [thread 6074] [3.0] [cxt 0] Parser 'parser': start
+[05:31:38.473] [bmv2] [D] [thread 6074] [3.0] [cxt 0] Parser 'parser' entering state 'start'
+[05:31:38.473] [bmv2] [D] [thread 6074] [3.0] [cxt 0] Parser state 'start' has no switch, going to default next state
+[05:31:38.473] [bmv2] [T] [thread 6074] [3.0] [cxt 0] Bytes parsed: 0
+[05:31:38.473] [bmv2] [D] [thread 6074] [3.0] [cxt 0] Parser 'parser': end
+[05:31:38.473] [bmv2] [D] [thread 6074] [3.0] [cxt 0] Pipeline 'ingress': start
+[05:31:38.473] [bmv2] [T] [thread 6074] [3.0] [cxt 0] Applying table 'MyIngress.phy_forward'
+[05:31:38.473] [bmv2] [D] [thread 6074] [3.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0002
+
+[05:31:38.473] [bmv2] [D] [thread 6074] [3.0] [cxt 0] Table 'MyIngress.phy_forward': hit with handle 1
+[05:31:38.473] [bmv2] [D] [thread 6074] [3.0] [cxt 0] Dumping entry 1
+Match key:
+* standard_metadata.ingress_port: EXACT     0002
+Action entry: MyIngress.forward - 1,
+
+[05:31:38.473] [bmv2] [D] [thread 6074] [3.0] [cxt 0] Action entry is MyIngress.forward - 1,
+[05:31:38.473] [bmv2] [T] [thread 6074] [3.0] [cxt 0] Action MyIngress.forward
+[05:31:38.473] [bmv2] [T] [thread 6074] [3.0] [cxt 0] basic.p4(60) Primitive standard_metadata.egress_spec = port
+[05:31:38.473] [bmv2] [D] [thread 6074] [3.0] [cxt 0] Pipeline 'ingress': end
+[05:31:38.473] [bmv2] [D] [thread 6074] [3.0] [cxt 0] Egress port is 1
+[05:31:38.476] [bmv2] [D] [thread 6076] [3.0] [cxt 0] Pipeline 'egress': start
+[05:31:38.476] [bmv2] [T] [thread 6076] [3.0] [cxt 0] basic.p4(89) Condition "standard_metadata.instance_type == 0" (node_5) is true
+[05:31:38.476] [bmv2] [T] [thread 6076] [3.0] [cxt 0] Applying table 'tbl_basic90'
+[05:31:38.476] [bmv2] [D] [thread 6076] [3.0] [cxt 0] Looking up key:
+
+[05:31:38.476] [bmv2] [D] [thread 6076] [3.0] [cxt 0] Table 'tbl_basic90': miss
+[05:31:38.476] [bmv2] [D] [thread 6076] [3.0] [cxt 0] Action entry is basic90 - 
+[05:31:38.476] [bmv2] [T] [thread 6076] [3.0] [cxt 0] Action basic90
+[05:31:38.476] [bmv2] [T] [thread 6076] [3.0] [cxt 0] basic.p4(90) Primitive clone(CloneType.E2E,100)
+[05:31:38.476] [bmv2] [D] [thread 6076] [3.0] [cxt 0] Pipeline 'egress': end
+[05:31:38.476] [bmv2] [D] [thread 6076] [3.0] [cxt 0] Cloning packet at egress
+[05:31:38.476] [bmv2] [D] [thread 6076] [3.0] [cxt 0] Cloning packet to egress port 3
+[05:31:38.476] [bmv2] [D] [thread 6076] [3.0] [cxt 0] Deparser 'deparser': start
+[05:31:38.477] [bmv2] [D] [thread 6076] [3.0] [cxt 0] Deparser 'deparser': end
+[05:31:38.477] [bmv2] [D] [thread 6078] [3.1] [cxt 0] Pipeline 'egress': start
+[05:31:38.477] [bmv2] [T] [thread 6078] [3.1] [cxt 0] basic.p4(89) Condition "standard_metadata.instance_type == 0" (node_5) is false
+[05:31:38.477] [bmv2] [D] [thread 6078] [3.1] [cxt 0] Pipeline 'egress': end
+[05:31:38.477] [bmv2] [D] [thread 6078] [3.1] [cxt 0] Deparser 'deparser': start
+[05:31:38.477] [bmv2] [D] [thread 6078] [3.1] [cxt 0] Deparser 'deparser': end
+[05:31:38.477] [bmv2] [D] [thread 6079] [3.0] [cxt 0] Transmitting packet of size 98 out of port 1
+[05:31:38.477] [bmv2] [D] [thread 6079] [3.1] [cxt 0] Transmitting packet of size 98 out of port 3
+[05:31:41.935] [bmv2] [D] [thread 6074] [4.0] [cxt 0] Processing packet received on port 1
+[05:31:41.935] [bmv2] [D] [thread 6074] [4.0] [cxt 0] Parser 'parser': start
+[05:31:41.935] [bmv2] [D] [thread 6074] [4.0] [cxt 0] Parser 'parser' entering state 'start'
+[05:31:41.935] [bmv2] [D] [thread 6074] [4.0] [cxt 0] Parser state 'start' has no switch, going to default next state
+[05:31:41.935] [bmv2] [T] [thread 6074] [4.0] [cxt 0] Bytes parsed: 0
+[05:31:41.935] [bmv2] [D] [thread 6074] [4.0] [cxt 0] Parser 'parser': end
+[05:31:41.935] [bmv2] [D] [thread 6074] [4.0] [cxt 0] Pipeline 'ingress': start
+[05:31:41.935] [bmv2] [T] [thread 6074] [4.0] [cxt 0] Applying table 'MyIngress.phy_forward'
+[05:31:41.935] [bmv2] [D] [thread 6074] [4.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+
+[05:31:41.935] [bmv2] [D] [thread 6074] [4.0] [cxt 0] Table 'MyIngress.phy_forward': hit with handle 0
+[05:31:41.935] [bmv2] [D] [thread 6074] [4.0] [cxt 0] Dumping entry 0
+Match key:
+* standard_metadata.ingress_port: EXACT     0001
+Action entry: MyIngress.forward - 2,
+
+[05:31:41.935] [bmv2] [D] [thread 6074] [4.0] [cxt 0] Action entry is MyIngress.forward - 2,
+[05:31:41.935] [bmv2] [T] [thread 6074] [4.0] [cxt 0] Action MyIngress.forward
+[05:31:41.935] [bmv2] [T] [thread 6074] [4.0] [cxt 0] basic.p4(60) Primitive standard_metadata.egress_spec = port
+[05:31:41.935] [bmv2] [D] [thread 6074] [4.0] [cxt 0] Pipeline 'ingress': end
+[05:31:41.935] [bmv2] [D] [thread 6074] [4.0] [cxt 0] Egress port is 2
+[05:31:41.935] [bmv2] [D] [thread 6077] [4.0] [cxt 0] Pipeline 'egress': start
+[05:31:41.935] [bmv2] [T] [thread 6077] [4.0] [cxt 0] basic.p4(89) Condition "standard_metadata.instance_type == 0" (node_5) is true
+[05:31:41.935] [bmv2] [T] [thread 6077] [4.0] [cxt 0] Applying table 'tbl_basic90'
+[05:31:41.935] [bmv2] [D] [thread 6077] [4.0] [cxt 0] Looking up key:
+
+[05:31:41.935] [bmv2] [D] [thread 6077] [4.0] [cxt 0] Table 'tbl_basic90': miss
+[05:31:41.935] [bmv2] [D] [thread 6077] [4.0] [cxt 0] Action entry is basic90 - 
+[05:31:41.935] [bmv2] [T] [thread 6077] [4.0] [cxt 0] Action basic90
+[05:31:41.935] [bmv2] [T] [thread 6077] [4.0] [cxt 0] basic.p4(90) Primitive clone(CloneType.E2E,100)
+[05:31:41.935] [bmv2] [D] [thread 6077] [4.0] [cxt 0] Pipeline 'egress': end
+[05:31:41.935] [bmv2] [D] [thread 6077] [4.0] [cxt 0] Cloning packet at egress
+[05:31:41.935] [bmv2] [D] [thread 6077] [4.0] [cxt 0] Cloning packet to egress port 3
+[05:31:41.935] [bmv2] [D] [thread 6077] [4.0] [cxt 0] Deparser 'deparser': start
+[05:31:41.935] [bmv2] [D] [thread 6077] [4.0] [cxt 0] Deparser 'deparser': end
+[05:31:41.935] [bmv2] [D] [thread 6078] [4.1] [cxt 0] Pipeline 'egress': start
+[05:31:41.935] [bmv2] [T] [thread 6078] [4.1] [cxt 0] basic.p4(89) Condition "standard_metadata.instance_type == 0" (node_5) is false
+[05:31:41.935] [bmv2] [D] [thread 6078] [4.1] [cxt 0] Pipeline 'egress': end
+[05:31:41.935] [bmv2] [D] [thread 6078] [4.1] [cxt 0] Deparser 'deparser': start
+[05:31:41.935] [bmv2] [D] [thread 6078] [4.1] [cxt 0] Deparser 'deparser': end
+[05:31:41.935] [bmv2] [D] [thread 6079] [4.0] [cxt 0] Transmitting packet of size 98 out of port 2
+[05:31:41.936] [bmv2] [D] [thread 6079] [4.1] [cxt 0] Transmitting packet of size 98 out of port 3
+[05:31:41.938] [bmv2] [D] [thread 6074] [5.0] [cxt 0] Processing packet received on port 2
+[05:31:41.938] [bmv2] [D] [thread 6074] [5.0] [cxt 0] Parser 'parser': start
+[05:31:41.938] [bmv2] [D] [thread 6074] [5.0] [cxt 0] Parser 'parser' entering state 'start'
+[05:31:41.938] [bmv2] [D] [thread 6074] [5.0] [cxt 0] Parser state 'start' has no switch, going to default next state
+[05:31:41.938] [bmv2] [T] [thread 6074] [5.0] [cxt 0] Bytes parsed: 0
+[05:31:41.938] [bmv2] [D] [thread 6074] [5.0] [cxt 0] Parser 'parser': end
+[05:31:41.938] [bmv2] [D] [thread 6074] [5.0] [cxt 0] Pipeline 'ingress': start
+[05:31:41.938] [bmv2] [T] [thread 6074] [5.0] [cxt 0] Applying table 'MyIngress.phy_forward'
+[05:31:41.938] [bmv2] [D] [thread 6074] [5.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0002
+
+[05:31:41.938] [bmv2] [D] [thread 6074] [5.0] [cxt 0] Table 'MyIngress.phy_forward': hit with handle 1
+[05:31:41.938] [bmv2] [D] [thread 6074] [5.0] [cxt 0] Dumping entry 1
+Match key:
+* standard_metadata.ingress_port: EXACT     0002
+Action entry: MyIngress.forward - 1,
+
+[05:31:41.938] [bmv2] [D] [thread 6074] [5.0] [cxt 0] Action entry is MyIngress.forward - 1,
+[05:31:41.938] [bmv2] [T] [thread 6074] [5.0] [cxt 0] Action MyIngress.forward
+[05:31:41.938] [bmv2] [T] [thread 6074] [5.0] [cxt 0] basic.p4(60) Primitive standard_metadata.egress_spec = port
+[05:31:41.938] [bmv2] [D] [thread 6074] [5.0] [cxt 0] Pipeline 'ingress': end
+[05:31:41.938] [bmv2] [D] [thread 6074] [5.0] [cxt 0] Egress port is 1
+[05:31:41.938] [bmv2] [D] [thread 6076] [5.0] [cxt 0] Pipeline 'egress': start
+[05:31:41.939] [bmv2] [T] [thread 6076] [5.0] [cxt 0] basic.p4(89) Condition "standard_metadata.instance_type == 0" (node_5) is true
+[05:31:41.939] [bmv2] [T] [thread 6076] [5.0] [cxt 0] Applying table 'tbl_basic90'
+[05:31:41.939] [bmv2] [D] [thread 6076] [5.0] [cxt 0] Looking up key:
+
+[05:31:41.939] [bmv2] [D] [thread 6076] [5.0] [cxt 0] Table 'tbl_basic90': miss
+[05:31:41.939] [bmv2] [D] [thread 6076] [5.0] [cxt 0] Action entry is basic90 - 
+[05:31:41.939] [bmv2] [T] [thread 6076] [5.0] [cxt 0] Action basic90
+[05:31:41.939] [bmv2] [T] [thread 6076] [5.0] [cxt 0] basic.p4(90) Primitive clone(CloneType.E2E,100)
+[05:31:41.939] [bmv2] [D] [thread 6076] [5.0] [cxt 0] Pipeline 'egress': end
+[05:31:41.939] [bmv2] [D] [thread 6076] [5.0] [cxt 0] Cloning packet at egress
+[05:31:41.939] [bmv2] [D] [thread 6076] [5.0] [cxt 0] Cloning packet to egress port 3
+[05:31:41.939] [bmv2] [D] [thread 6076] [5.0] [cxt 0] Deparser 'deparser': start
+[05:31:41.939] [bmv2] [D] [thread 6076] [5.0] [cxt 0] Deparser 'deparser': end
+[05:31:41.939] [bmv2] [D] [thread 6078] [5.1] [cxt 0] Pipeline 'egress': start
+[05:31:41.939] [bmv2] [T] [thread 6078] [5.1] [cxt 0] basic.p4(89) Condition "standard_metadata.instance_type == 0" (node_5) is false
+[05:31:41.939] [bmv2] [D] [thread 6078] [5.1] [cxt 0] Pipeline 'egress': end
+[05:31:41.939] [bmv2] [D] [thread 6078] [5.1] [cxt 0] Deparser 'deparser': start
+[05:31:41.939] [bmv2] [D] [thread 6078] [5.1] [cxt 0] Deparser 'deparser': end
+[05:31:41.939] [bmv2] [D] [thread 6079] [5.0] [cxt 0] Transmitting packet of size 98 out of port 1
+[05:31:41.939] [bmv2] [D] [thread 6079] [5.1] [cxt 0] Transmitting packet of size 98 out of port 3
+open: No such file or directory
+open: No such file or directory
+open: No such file or directory
+open: No such file or directory
